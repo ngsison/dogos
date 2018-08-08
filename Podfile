@@ -6,7 +6,8 @@ target 'Dogos' do
   use_frameworks!
 
   # Pods for Dogos
-  pod 'Moya'                          # Networking Abstraction Layer
-  pod 'SnapKit'                       # Constraint Programmatically.
-  pod 'SwiftyJSON'                    # Parsing of JSON Data
+  pod 'Alamofire'
+  pod 'SVProgressHUD'
+  pod 'SnapKit'
+  pod 'SwiftyJSON'
 end
