@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		203734BB211B3A90004316C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203734BA211B3A90004316C4 /* Constants.swift */; };
+		203734BE211B3F24004316C4 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203734BD211B3F24004316C4 /* URLHelper.swift */; };
 		20C31D13211A9CB30067BE24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C31D12211A9CB30067BE24 /* AppDelegate.swift */; };
 		20C31D1A211A9CB50067BE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C31D19211A9CB50067BE24 /* Assets.xcassets */; };
 		20C31D1D211A9CB50067BE24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C31D1B211A9CB50067BE24 /* LaunchScreen.storyboard */; };
@@ -16,6 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		203734BA211B3A90004316C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		203734BD211B3F24004316C4 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		20C31D0F211A9CB30067BE24 /* Dogos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C31D12211A9CB30067BE24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C31D19211A9CB50067BE24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -40,6 +44,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		203734BC211B3F13004316C4 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				203734BD211B3F24004316C4 /* URLHelper.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		20C31D06211A9CB30067BE24 = {
 			isa = PBXGroup;
 			children = (
@@ -61,6 +73,7 @@
 		20C31D11211A9CB30067BE24 /* Dogos */ = {
 			isa = PBXGroup;
 			children = (
+				203734BC211B3F13004316C4 /* Utilities */,
 				20C31D28211A9D690067BE24 /* Supporting Files */,
 				20C31D27211A9D290067BE24 /* Views */,
 				20C31D26211A9D220067BE24 /* Controllers */,
@@ -99,6 +112,7 @@
 				20C31D19211A9CB50067BE24 /* Assets.xcassets */,
 				20C31D1B211A9CB50067BE24 /* LaunchScreen.storyboard */,
 				20C31D1E211A9CB50067BE24 /* Info.plist */,
+				203734BA211B3A90004316C4 /* Constants.swift */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -237,9 +251,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				203734BE211B3F24004316C4 /* URLHelper.swift in Sources */,
 				20C31D13211A9CB30067BE24 /* AppDelegate.swift in Sources */,
 				20C31D2A211A9F8E0067BE24 /* DogosVC.swift in Sources */,
 				20C31D2C211A9FAB0067BE24 /* DogosVC+SetupViews.swift in Sources */,
+				203734BB211B3A90004316C4 /* Constants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -379,7 +395,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTXVH4GTQ;
 				INFOPLIST_FILE = "$(SRCROOT)/Dogos/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ngsison.Dogos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -395,7 +414,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTXVH4GTQ;
 				INFOPLIST_FILE = "$(SRCROOT)/Dogos/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ngsison.Dogos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

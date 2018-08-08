@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import Alamofire
+import SVProgressHUD
+import SwiftyJSON
 
 class DogosVC: UIViewController {
 
@@ -17,18 +20,37 @@ class DogosVC: UIViewController {
         return view
     }()
     
-    internal lazy var box: UIView = {
-        let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 0.2588235438, green: 0.7568627596, blue: 0.9686274529, alpha: 1)
-        return view
-    }()
-    
     // MARK: - overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("DogosVC has been loaded!")
-        
         self.initViews()
+        self.getImages()
+    }
+    
+    func getImages() {
+        SVProgressHUD.show()
+        
+        let url = URLHelper.getImagesByBreedURL("husky")
+        print(url)
+        
+        Alamofire.request(url, method: .get).responseJSON { response in
+            SVProgressHUD.dismiss()
+            
+            if response.result.isSuccess {
+                print("getImagesByBreed success")
+                
+                if let resultValue = response.result.value {
+                    let jsonObj = JSON(resultValue)
+                    
+                    for (_, item):(String, JSON) in jsonObj {
+                        print(item)
+                    }
+                }
+            }
+            else if response.result.isFailure {
+                print("An error occured")
+            }
+        }
     }
 }
