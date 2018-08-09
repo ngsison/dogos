@@ -20,6 +20,7 @@ class DogosVC: UIViewController {
         return view
     }()
     
+    
     // MARK: - overrides
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,6 +29,8 @@ class DogosVC: UIViewController {
         self.getImages()
     }
     
+    
+    // MARK - network calls
     func getImages() {
         SVProgressHUD.show()
         
@@ -36,21 +39,22 @@ class DogosVC: UIViewController {
         
         Alamofire.request(url, method: .get).responseJSON { response in
             SVProgressHUD.dismiss()
-            
-            if response.result.isSuccess {
-                print("getImagesByBreed success")
-                
-                if let resultValue = response.result.value {
-                    let jsonObj = JSON(resultValue)
+
+            switch response.result {
+                case .success:
+                    print("getImagesByBreed success")
                     
-                    for (_, item):(String, JSON) in jsonObj {
-                        print(item)
+                    if let resultValue = response.result.value {
+                        let jsonObj = JSON(resultValue)
+                        for (_, item):(String, JSON) in jsonObj {
+                            print(item)
+                        }
                     }
-                }
+                
+                case .failure:
+                    print("An error occured")
             }
-            else if response.result.isFailure {
-                print("An error occured")
-            }
+
         }
     }
 }

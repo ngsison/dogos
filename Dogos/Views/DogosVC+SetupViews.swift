@@ -11,12 +11,12 @@ import SnapKit
 
 extension DogosVC {
     internal func initViews() {
-        title = "Dogos"
-        navigationController?.navigationBar.isTranslucent = false
+        self.title = "Dogos"
+        self.navigationController?.navigationBar.isTranslucent = false
         
-        view.addSubview(container)
+        self.view.addSubview(self.container)
         
-        container.snp.makeConstraints { (make) in
+        self.container.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
     }
