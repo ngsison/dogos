@@ -17,23 +17,31 @@ class DogosTableViewCell: UITableViewCell {
     
     private lazy var container: UIView = {
         let view = UIView()
-        
-        view.backgroundColor = #colorLiteral(red: 0.8039215803, green: 0.8039215803, blue: 0.8039215803, alpha: 1)
-        
         return view
     }()
     
-    private lazy var imageURL: UILabel = {
-        let label = UILabel()
-        
-        return label
+    private lazy var dogoImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = UIViewContentMode.scaleAspectFill
+        imageView.clipsToBounds = true
+        return imageView
     }()
     
     
     
     // MARK: functions
-    public func setup(_ url: String) {
-        self.imageURL.text = url
+    public func setup(_ urlString: String) {
+        do {
+            let url = URL(string: urlString)
+            
+            if let url = url {
+                let imageData = try Data(contentsOf: url)
+                self.dogoImage.image = UIImage(data: imageData)
+            }
+        }
+        catch {
+            print("Loading Images Failed")
+        }
     }
     
     
@@ -42,16 +50,15 @@ class DogosTableViewCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        self.container.addSubview(imageURL)
+        self.container.addSubview(dogoImage)
         self.addSubview(self.container)
 
-        self.imageURL.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+        self.dogoImage.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 10, 0)) // top, left, bottom, right
         }
 
         self.container.snp.makeConstraints { (make) in
-            make.left.top.right.equalToSuperview()
-            make.height.equalTo(50)
+            make.edges.equalToSuperview()
         }
     }
     

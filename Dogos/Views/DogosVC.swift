@@ -29,11 +29,11 @@ class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     internal lazy var tableView: UITableView = {
         let tableView = UITableView()
         
+        tableView.register(DogosTableViewCell.self, forCellReuseIdentifier: DogosTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.register(DogosTableViewCell.self, forCellReuseIdentifier: DogosTableViewCell.identifier)
-        tableView.estimatedRowHeight = 50
         tableView.rowHeight = UITableViewAutomaticDimension
+        tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         return tableView
     }()
