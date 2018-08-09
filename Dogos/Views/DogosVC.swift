@@ -13,12 +13,21 @@ import SwiftyJSON
 
 class DogosVC: UIViewController {
 
+    
+    
     // MARK: - properties
     internal lazy var container: UIView = {
         let view = UIView()
-        view.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        view.backgroundColor = .white
         return view
     }()
+    
+    internal lazy var tableView: UITableView = {
+        let tableView = UITableView()
+        
+        return tableView
+    }()
+    
     
     
     // MARK: - overrides
@@ -28,6 +37,7 @@ class DogosVC: UIViewController {
         self.initViews()
         self.getImages()
     }
+    
     
     
     // MARK - network calls

@@ -52,6 +52,13 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
+		203B6FDB211C20F900D441B6 /* Table View Cells */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = "Table View Cells";
+			sourceTree = "<group>";
+		};
 		20C31D06211A9CB30067BE24 = {
 			isa = PBXGroup;
 			children = (
@@ -99,6 +106,7 @@
 		20C31D27211A9D290067BE24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				203B6FDB211C20F900D441B6 /* Table View Cells */,
 				20C31D29211A9F8E0067BE24 /* DogosVC.swift */,
 				20C31D2B211A9FAB0067BE24 /* DogosVC+SetupViews.swift */,
 			);
