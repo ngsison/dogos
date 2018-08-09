@@ -11,36 +11,69 @@ import Alamofire
 import SVProgressHUD
 import SwiftyJSON
 
-class DogosVC: UIViewController {
+class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     
     
-    // MARK: - properties
+    // MARK: properties
+    private var dogos = [String]()
+    
     internal lazy var container: UIView = {
         let view = UIView()
+        
         view.backgroundColor = .white
+        
         return view
     }()
     
     internal lazy var tableView: UITableView = {
         let tableView = UITableView()
         
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(DogosTableViewCell.self, forCellReuseIdentifier: DogosTableViewCell.identifier)
+        tableView.estimatedRowHeight = 50
+        tableView.rowHeight = UITableViewAutomaticDimension
+        
         return tableView
     }()
     
+    private lazy var dogosTableViewCell: DogosTableViewCell = {
+        let cell = DogosTableViewCell(
+            style: UITableViewCellStyle.default,
+            reuseIdentifier: DogosTableViewCell.identifier
+        )
+        
+        return cell
+    }()
     
     
-    // MARK: - overrides
+    // MARK: overrides
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.initViews()
+        self.setupViews()
         self.getImages()
     }
     
     
     
-    // MARK - network calls
+    // MARK: table view
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dogos.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DogosTableViewCell.identifier, for: indexPath) as! DogosTableViewCell
+        
+        cell.setup(self.dogos[indexPath.row])
+        
+        return cell
+    }
+    
+    
+    
+    // MARK: network calls
     func getImages() {
         SVProgressHUD.show()
         
@@ -56,8 +89,15 @@ class DogosVC: UIViewController {
                     
                     if let resultValue = response.result.value {
                         let jsonObj = JSON(resultValue)
-                        for (_, item):(String, JSON) in jsonObj {
-                            print(item)
+                        
+                        let status = jsonObj["status"]
+                        let message = jsonObj["message"]
+                        
+                        if status == "success" {
+                            for (_, item):(String, JSON) in message {
+                                self.dogos.append(item.stringValue)
+                            }
+                            self.tableView.reloadData()
                         }
                     }
                 

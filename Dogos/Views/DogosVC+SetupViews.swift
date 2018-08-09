@@ -11,7 +11,7 @@ import SnapKit
 
 extension DogosVC {
     
-    internal func initViews() {
+    internal func setupViews() {
         self.title = "Dogos"
         self.navigationController?.navigationBar.isTranslucent = false
         
