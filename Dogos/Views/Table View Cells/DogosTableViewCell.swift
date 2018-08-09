@@ -40,7 +40,7 @@ class DogosTableViewCell: UITableViewCell {
             }
         }
         catch {
-            print("Loading Images Failed")
+            print("Loading Image Failed")
         }
     }
     

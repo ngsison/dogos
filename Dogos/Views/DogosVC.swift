@@ -48,6 +48,7 @@ class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     }()
     
     
+    
     // MARK: overrides
     override func viewDidLoad() {
         super.viewDidLoad()

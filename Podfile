@@ -10,4 +10,5 @@ target 'Dogos' do
   pod 'SVProgressHUD'
   pod 'SnapKit'
   pod 'SwiftyJSON'
+  pod 'Kingfisher'
 end
