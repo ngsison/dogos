@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Kingfisher
 
 class DogosTableViewCell: UITableViewCell {
     
@@ -31,16 +32,8 @@ class DogosTableViewCell: UITableViewCell {
     
     // MARK: functions
     public func setup(_ urlString: String) {
-        do {
-            let url = URL(string: urlString)
-            
-            if let url = url {
-                let imageData = try Data(contentsOf: url)
-                self.dogoImage.image = UIImage(data: imageData)
-            }
-        }
-        catch {
-            print("Loading Image Failed")
+        if let url = URL(string: urlString) {
+            self.dogoImage.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(0.5))], progressBlock: nil, completionHandler: nil)
         }
     }
     

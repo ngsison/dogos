@@ -32,8 +32,12 @@ class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.register(DogosTableViewCell.self, forCellReuseIdentifier: DogosTableViewCell.identifier)
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight = UITableViewAutomaticDimension
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
+        
+        
+        // TODO: Fix bug where images in tableview cell doesn't reload if rowHeight is dynamic
+        tableView.rowHeight = 300
+        //tableView.rowHeight = UITableViewAutomaticDimension
         
         return tableView
     }()
