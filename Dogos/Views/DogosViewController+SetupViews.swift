@@ -1,5 +1,5 @@
 //
-//  DogosVC+SetupViews.swift
+//  DogosViewController+SetupViews.swift
 //  Dogos
 //
 //  Created by Nathaniel SISON on 8/8/2018.
@@ -9,7 +9,7 @@
 import UIKit
 import SnapKit
 
-extension DogosVC {
+extension DogosViewController {
     
     internal func setupViews() {
         self.title = "Dogos"

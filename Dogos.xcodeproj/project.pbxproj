@@ -13,8 +13,8 @@
 		20C31D13211A9CB30067BE24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C31D12211A9CB30067BE24 /* AppDelegate.swift */; };
 		20C31D1A211A9CB50067BE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C31D19211A9CB50067BE24 /* Assets.xcassets */; };
 		20C31D1D211A9CB50067BE24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C31D1B211A9CB50067BE24 /* LaunchScreen.storyboard */; };
-		20C31D2A211A9F8E0067BE24 /* DogosVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C31D29211A9F8E0067BE24 /* DogosVC.swift */; };
-		20C31D2C211A9FAB0067BE24 /* DogosVC+SetupViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C31D2B211A9FAB0067BE24 /* DogosVC+SetupViews.swift */; };
+		20C31D2A211A9F8E0067BE24 /* DogosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C31D29211A9F8E0067BE24 /* DogosViewController.swift */; };
+		20C31D2C211A9FAB0067BE24 /* DogosViewController+SetupViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C31D2B211A9FAB0067BE24 /* DogosViewController+SetupViews.swift */; };
 		6839A0161ACDC243E135D65D /* Pods_Dogos.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C83183D314517051BE5C953 /* Pods_Dogos.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,8 +27,8 @@
 		20C31D19211A9CB50067BE24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20C31D1C211A9CB50067BE24 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20C31D1E211A9CB50067BE24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		20C31D29211A9F8E0067BE24 /* DogosVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogosVC.swift; sourceTree = "<group>"; };
-		20C31D2B211A9FAB0067BE24 /* DogosVC+SetupViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DogosVC+SetupViews.swift"; sourceTree = "<group>"; };
+		20C31D29211A9F8E0067BE24 /* DogosViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogosViewController.swift; sourceTree = "<group>"; };
+		20C31D2B211A9FAB0067BE24 /* DogosViewController+SetupViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DogosViewController+SetupViews.swift"; sourceTree = "<group>"; };
 		2C83183D314517051BE5C953 /* Pods_Dogos.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dogos.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5729E84DBAA32859CA092F02 /* Pods-Dogos.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogos.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dogos/Pods-Dogos.debug.xcconfig"; sourceTree = "<group>"; };
 		A1B51EA7DE90DE3CB1A52BED /* Pods-Dogos.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dogos.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dogos/Pods-Dogos.release.xcconfig"; sourceTree = "<group>"; };
@@ -110,8 +110,8 @@
 			isa = PBXGroup;
 			children = (
 				203B6FDB211C20F900D441B6 /* Table View Cells */,
-				20C31D29211A9F8E0067BE24 /* DogosVC.swift */,
-				20C31D2B211A9FAB0067BE24 /* DogosVC+SetupViews.swift */,
+				20C31D29211A9F8E0067BE24 /* DogosViewController.swift */,
+				20C31D2B211A9FAB0067BE24 /* DogosViewController+SetupViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -266,8 +266,8 @@
 			files = (
 				203734BE211B3F24004316C4 /* URLHelper.swift in Sources */,
 				20C31D13211A9CB30067BE24 /* AppDelegate.swift in Sources */,
-				20C31D2A211A9F8E0067BE24 /* DogosVC.swift in Sources */,
-				20C31D2C211A9FAB0067BE24 /* DogosVC+SetupViews.swift in Sources */,
+				20C31D2A211A9F8E0067BE24 /* DogosViewController.swift in Sources */,
+				20C31D2C211A9FAB0067BE24 /* DogosViewController+SetupViews.swift in Sources */,
 				203B6FDD211C239A00D441B6 /* DogosTableViewCell.swift in Sources */,
 				203734BB211B3A90004316C4 /* Constants.swift in Sources */,
 			);
@@ -409,7 +409,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTXVH4GTQ;
 				INFOPLIST_FILE = "$(SRCROOT)/Dogos/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ngsison.Dogos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -425,7 +428,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = KMTXVH4GTQ;
 				INFOPLIST_FILE = "$(SRCROOT)/Dogos/Supporting Files/Info.plist";
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ngsison.Dogos;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

@@ -1,5 +1,5 @@
 //
-//  DogosVC.swift
+//  DogosViewController.swift
 //  Dogos
 //
 //  Created by Nathaniel SISON on 8/8/2018.
@@ -11,11 +11,12 @@ import Alamofire
 import SVProgressHUD
 import SwiftyJSON
 
-class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
-
+class DogosViewController: UIViewController {
+    
     
     
     // MARK: properties
+    
     private var dogos = [String]()
     
     internal lazy var container: UIView = {
@@ -33,7 +34,6 @@ class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
-        
         
         // TODO: Fix bug where images in tableview cell doesn't reload if rowHeight is dynamic
         tableView.rowHeight = 300
@@ -54,6 +54,7 @@ class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     // MARK: overrides
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -63,22 +64,8 @@ class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
     
-    // MARK: table view
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dogos.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: DogosTableViewCell.identifier, for: indexPath) as! DogosTableViewCell
-        
-        cell.setup(self.dogos[indexPath.row])
-        
-        return cell
-    }
-    
-    
-    
     // MARK: network calls
+    
     func getImages() {
         SVProgressHUD.show()
         
@@ -112,4 +99,36 @@ class DogosVC: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
         }
     }
+}
+
+
+
+// MARK: Extension - UITableViewDataSource
+
+extension DogosViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return dogos.count
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: DogosTableViewCell.identifier, for: indexPath) as! DogosTableViewCell
+
+        cell.setup(self.dogos[indexPath.row])
+
+        return cell
+    }
+
+}
+
+
+
+// MARK: Extension - UITableViewDelegate
+
+extension DogosViewController: UITableViewDelegate {
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
 }
