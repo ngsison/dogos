@@ -15,6 +15,7 @@ extension DogosViewController {
         self.title = "Dogos"
         self.navigationController?.navigationBar.isTranslucent = false
         
+        //self.categoryPickerContainer.addSubview(self.fuck)
         self.categoryPickerContainer.addSubview(self.categoryPickerStackView)
         self.container.addSubview(self.categoryPickerContainer)
         self.container.addSubview(self.tableView)
@@ -34,7 +35,7 @@ extension DogosViewController {
     func setupCategoryPicker() {
         self.categoryPickerContainer.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
-            make.height.equalTo(50)
+            make.height.equalTo(55)
         }
         
         self.categoryPickerStackView.snp.makeConstraints { (make) in

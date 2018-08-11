@@ -13,8 +13,7 @@ class DogosTableViewCell: UITableViewCell {
     
 
     
-    // MARK: properties
-    
+    // MARK: PROPERTIES
     public static let identifier = "dogosTableViewCell"
     
     private lazy var container: UIView = {
@@ -31,8 +30,7 @@ class DogosTableViewCell: UITableViewCell {
     
     
     
-    // MARK: functions
-    
+    // MARK: FUNCTIONS
     public func setup(_ urlString: String) {
         if let url = URL(string: urlString) {
             self.dogoImage.kf.setImage(with: url, placeholder: nil, options: [.transition(.fade(0.5))], progressBlock: nil, completionHandler: nil)
@@ -41,8 +39,7 @@ class DogosTableViewCell: UITableViewCell {
     
     
     
-    // MARK: overrides
-    
+    // MARK: OVERRIDES
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 

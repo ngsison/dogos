@@ -15,8 +15,7 @@ class DogosViewController: UIViewController {
     
     
     
-    // MARK: properties
-    
+    // MARK: PROPERTIES
     private var dogos = [String]()
     
     internal lazy var container: UIView = {
@@ -30,7 +29,7 @@ class DogosViewController: UIViewController {
     internal lazy var categoryPickerContainer: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor.lightGray
+        view.backgroundColor = UIColor.white
         
         return view
     }()
@@ -39,16 +38,12 @@ class DogosViewController: UIViewController {
         let stackView = UIStackView()
         
         stackView.distribution = .fillEqually
+        stackView.spacing = 0
         
-        let categoryButton1 = UIButton()
-        let categoryButton2 = UIButton()
-        let categoryButton3 = UIButton()
-        let categoryButton4 = UIButton()
-        
-        categoryButton1.setTitle("Husky", for: UIControlState.normal)
-        categoryButton2.setTitle("Doberman", for: UIControlState.normal)
-        categoryButton3.setTitle("Bully", for: UIControlState.normal)
-        categoryButton4.setTitle("Pug", for: UIControlState.normal)
+        let categoryButton1 = CategoryButton(named: "Husky")
+        let categoryButton2 = CategoryButton(named: "Doberman")
+        let categoryButton3 = CategoryButton(named: "Bully")
+        let categoryButton4 = CategoryButton(named: "Pug")
         
         stackView.addArrangedSubview(categoryButton1)
         stackView.addArrangedSubview(categoryButton2)
@@ -84,8 +79,7 @@ class DogosViewController: UIViewController {
     
     
     
-    // MARK: overrides
-    
+    // MARK: OVERRIDES
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -95,8 +89,7 @@ class DogosViewController: UIViewController {
     
     
     
-    // MARK: network calls
-    
+    // MARK: NETWORK
     func getImages() {
         SVProgressHUD.show()
         
@@ -134,8 +127,7 @@ class DogosViewController: UIViewController {
 
 
 
-// MARK: Extension - UITableViewDataSource
-
+// MARK: EXTENSION - UITableViewDataSource
 extension DogosViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -154,8 +146,7 @@ extension DogosViewController: UITableViewDataSource {
 
 
 
-// MARK: Extension - UITableViewDelegate
-
+// MARK: EXTENSION - UITableViewDelegate
 extension DogosViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
