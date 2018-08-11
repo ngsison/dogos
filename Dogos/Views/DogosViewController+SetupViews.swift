@@ -15,22 +15,37 @@ extension DogosViewController {
         self.title = "Dogos"
         self.navigationController?.navigationBar.isTranslucent = false
         
-        self.container.addSubview(self.categoryPicker)
+        self.categoryPickerContainer.addSubview(self.categoryPickerStackView)
+        self.container.addSubview(self.categoryPickerContainer)
         self.container.addSubview(self.tableView)
         self.view.addSubview(self.container)
         
+        setupContainer()
+        setupCategoryPicker()
+        setupTableView()
+    }
+    
+    func setupContainer() {
         self.container.snp.makeConstraints { (make) in
             make.edges.equalToSuperview()
         }
-        
-        self.categoryPicker.snp.makeConstraints { (make) in
+    }
+    
+    func setupCategoryPicker() {
+        self.categoryPickerContainer.snp.makeConstraints { (make) in
             make.left.top.right.equalToSuperview()
             make.height.equalTo(50)
         }
         
+        self.categoryPickerStackView.snp.makeConstraints { (make) in
+            make.edges.equalToSuperview()
+        }
+    }
+    
+    func setupTableView() {
         self.tableView.snp.makeConstraints { (make) in
             make.left.bottom.right.equalToSuperview()
-            make.top.top.equalTo(self.categoryPicker.snp.bottom)
+            make.top.top.equalTo(self.categoryPickerContainer.snp.bottom)
         }
     }
     

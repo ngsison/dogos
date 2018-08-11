@@ -27,12 +27,35 @@ class DogosViewController: UIViewController {
         return view
     }()
     
-    internal lazy var categoryPicker: UIView = {
+    internal lazy var categoryPickerContainer: UIView = {
         let view = UIView()
         
-        view.backgroundColor = UIColor.white
+        view.backgroundColor = UIColor.lightGray
         
         return view
+    }()
+    
+    internal lazy var categoryPickerStackView: UIStackView = {
+        let stackView = UIStackView()
+        
+        stackView.distribution = .fillEqually
+        
+        let categoryButton1 = UIButton()
+        let categoryButton2 = UIButton()
+        let categoryButton3 = UIButton()
+        let categoryButton4 = UIButton()
+        
+        categoryButton1.setTitle("Husky", for: UIControlState.normal)
+        categoryButton2.setTitle("Doberman", for: UIControlState.normal)
+        categoryButton3.setTitle("Bully", for: UIControlState.normal)
+        categoryButton4.setTitle("Pug", for: UIControlState.normal)
+        
+        stackView.addArrangedSubview(categoryButton1)
+        stackView.addArrangedSubview(categoryButton2)
+        stackView.addArrangedSubview(categoryButton3)
+        stackView.addArrangedSubview(categoryButton4)
+        
+        return stackView
     }()
     
     internal lazy var tableView: UITableView = {
