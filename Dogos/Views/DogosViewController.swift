@@ -17,6 +17,13 @@ class DogosViewController: UIViewController {
     
     // MARK: PROPERTIES
     private var dogos = [String]()
+    private var categoryButtons: [CategoryButton] = [
+        CategoryButton(named: "Husky"),
+        CategoryButton(named: "Doberman"),
+        CategoryButton(named: "Bully"),
+        CategoryButton(named: "Pug")
+    ]
+    private var selectedCategoryIndex = 0
     
     internal lazy var container: UIView = {
         let view = UIView()
@@ -40,15 +47,10 @@ class DogosViewController: UIViewController {
         stackView.distribution = .fillEqually
         stackView.spacing = 0
         
-        let categoryButton1 = CategoryButton(named: "Husky")
-        let categoryButton2 = CategoryButton(named: "Doberman")
-        let categoryButton3 = CategoryButton(named: "Bully")
-        let categoryButton4 = CategoryButton(named: "Pug")
-        
-        stackView.addArrangedSubview(categoryButton1)
-        stackView.addArrangedSubview(categoryButton2)
-        stackView.addArrangedSubview(categoryButton3)
-        stackView.addArrangedSubview(categoryButton4)
+        for button in categoryButtons {
+            button.addTarget(self, action: #selector(onCategoryChanged), for: UIControlEvents.touchUpInside)
+            stackView.addArrangedSubview(button)
+        }
         
         return stackView
     }()
@@ -83,8 +85,30 @@ class DogosViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.setupViews()
-        self.getImages()
+        setupViews()
+        getImages()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        didChangeState(sender: categoryButtons[selectedCategoryIndex])
+    }
+    
+    
+    
+    // MARK: EVENTS
+    @objc func onCategoryChanged(sender: CategoryButton) {
+        
+        // Revert previously selected button state to Normal
+        didChangeState(sender: categoryButtons[selectedCategoryIndex])
+        
+        // Update the currently selected button index
+        selectedCategoryIndex = categoryButtons.index(of: sender)!
+        
+        // Update new selected button state to Selected
+        didChangeState(sender: categoryButtons[selectedCategoryIndex])
+        
     }
     
     
@@ -94,14 +118,14 @@ class DogosViewController: UIViewController {
         SVProgressHUD.show()
         
         let url = URLHelper.getImagesByBreedURL("husky")
-        print(url)
+        print("init getImages - \(url)")
         
         Alamofire.request(url, method: .get).responseJSON { response in
             SVProgressHUD.dismiss()
 
             switch response.result {
                 case .success:
-                    print("getImagesByBreed success")
+                    print("getImages success")
                     
                     if let resultValue = response.result.value {
                         let jsonObj = JSON(resultValue)
@@ -118,11 +142,35 @@ class DogosViewController: UIViewController {
                     }
                 
                 case .failure:
-                    print("An error occured")
+                    print("getImages failed")
             }
 
         }
     }
+}
+
+
+
+// MARK: EXTENSION - CategoryButtonDelegate
+extension DogosViewController: CategoryButtonDelegate {
+    
+    func didChangeState(sender: CategoryButton) {
+        sender.currentState.toggle()
+        
+        switch sender.currentState {
+        case .normal:
+            sender.setBackgroundColor(sender.normalBackgroundColor, for: UIControlState.normal)
+            sender.setTitleColor(sender.normalTextColor, for: UIControlState.normal)
+            sender.layer.borderWidth = sender.normalBorderWidth
+        case .selected:
+            sender.setBackgroundColor(sender.selectedBackgroundColor, for: UIControlState.normal)
+            sender.setTitleColor(sender.selectedTextColor, for: UIControlState.normal)
+            sender.layer.borderWidth = sender.selectedBorderWidth
+        }
+        
+        print("current selected category: \(categoryButtons[selectedCategoryIndex].title)")
+    }
+    
 }
 
 

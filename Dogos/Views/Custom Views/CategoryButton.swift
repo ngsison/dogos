@@ -11,9 +11,25 @@ import UIKit
 
 
 // MARK: ENUMERATIONS
-enum CategoryButtonState {
+enum CategoryButtonState: Toggleable {
     case normal
     case selected
+    
+    mutating func toggle() {
+        switch self {
+        case .normal:
+            self = .selected
+        case .selected:
+            self = .normal
+        }
+    }
+}
+
+
+
+// MARK: PROTOCOLS
+protocol CategoryButtonDelegate {
+    func didChangeState(sender: CategoryButton)
 }
 
 
@@ -25,9 +41,11 @@ class CategoryButton: UIButton {
     
     let normalBackgroundColor = UIColor(red: 51/255, green: 67/255, blue: 81/255, alpha: 1)
     let normalTextColor = UIColor.white
+    let normalBorderWidth = CGFloat(0)
     
     let selectedBackgroundColor = UIColor.white
     let selectedTextColor = UIColor.orange
+    let selectedBorderWidth = CGFloat(1)
     
     var currentState = CategoryButtonState.normal
     
@@ -56,8 +74,11 @@ class CategoryButton: UIButton {
         
         self.setBackgroundColor(normalBackgroundColor, for: UIControlState.normal)
         self.setTitleColor(normalTextColor, for: UIControlState.normal)
+        self.layer.borderWidth = normalBorderWidth
+        
         self.titleLabel?.font = self.titleLabel?.font.withSize(14)
         self.setTitle(self.title, for: UIControlState.normal)
+        self.layer.borderColor = UIColor.lightGray.cgColor
 
     }
     

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		200E1FF1211F4C36005E47AC /* CategoryButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200E1FF0211F4C36005E47AC /* CategoryButton.swift */; };
+		200E1FF4211F6665005E47AC /* Toggleable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 200E1FF3211F6665005E47AC /* Toggleable.swift */; };
 		203734BB211B3A90004316C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203734BA211B3A90004316C4 /* Constants.swift */; };
 		203734BE211B3F24004316C4 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203734BD211B3F24004316C4 /* URLHelper.swift */; };
 		203B6FDD211C239A00D441B6 /* DogosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203B6FDC211C239A00D441B6 /* DogosTableViewCell.swift */; };
@@ -21,6 +22,7 @@
 
 /* Begin PBXFileReference section */
 		200E1FF0211F4C36005E47AC /* CategoryButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryButton.swift; sourceTree = "<group>"; };
+		200E1FF3211F6665005E47AC /* Toggleable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Toggleable.swift; sourceTree = "<group>"; };
 		203734BA211B3A90004316C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		203734BD211B3F24004316C4 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		203B6FDC211C239A00D441B6 /* DogosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogosTableViewCell.swift; sourceTree = "<group>"; };
@@ -54,6 +56,14 @@
 				200E1FF0211F4C36005E47AC /* CategoryButton.swift */,
 			);
 			path = "Custom Views";
+			sourceTree = "<group>";
+		};
+		200E1FF2211F6649005E47AC /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				200E1FF3211F6665005E47AC /* Toggleable.swift */,
+			);
+			path = Protocols;
 			sourceTree = "<group>";
 		};
 		203734BC211B3F13004316C4 /* Utilities */ = {
@@ -93,6 +103,7 @@
 		20C31D11211A9CB30067BE24 /* Dogos */ = {
 			isa = PBXGroup;
 			children = (
+				200E1FF2211F6649005E47AC /* Protocols */,
 				203734BC211B3F13004316C4 /* Utilities */,
 				20C31D28211A9D690067BE24 /* Supporting Files */,
 				20C31D27211A9D290067BE24 /* Views */,
@@ -276,6 +287,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				203734BE211B3F24004316C4 /* URLHelper.swift in Sources */,
+				200E1FF4211F6665005E47AC /* Toggleable.swift in Sources */,
 				20C31D13211A9CB30067BE24 /* AppDelegate.swift in Sources */,
 				20C31D2A211A9F8E0067BE24 /* DogosViewController.swift in Sources */,
 				20C31D2C211A9FAB0067BE24 /* DogosViewController+SetupViews.swift in Sources */,
