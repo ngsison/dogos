@@ -38,6 +38,7 @@ class CategoryButton: UIButton {
     
     // MARK: PROPERTIES
     var title = ""
+    var code = ""
     
     let normalBackgroundColor = UIColor(red: 51/255, green: 67/255, blue: 81/255, alpha: 1)
     let normalTextColor = UIColor.white
@@ -52,9 +53,10 @@ class CategoryButton: UIButton {
     
     
     // MARK: OVERRIDES
-    init(named name: String) {
+    init(named name: String, code: String) {
         super.init(frame: .zero)
         self.title = name
+        self.code = code
     }
     
     required init?(coder aDecoder: NSCoder) {

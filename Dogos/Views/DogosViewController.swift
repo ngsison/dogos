@@ -18,10 +18,10 @@ class DogosViewController: UIViewController {
     // MARK: PROPERTIES
     private var dogos = [String]()
     private var categoryButtons: [CategoryButton] = [
-        CategoryButton(named: "Husky"),
-        CategoryButton(named: "Doberman"),
-        CategoryButton(named: "Bully"),
-        CategoryButton(named: "Pug")
+        CategoryButton(named: "Husky", code: "husky"),
+        CategoryButton(named: "Doberman", code: "doberman"),
+        CategoryButton(named: "Bully", code: "bulldog"),
+        CategoryButton(named: "Pug", code: "pug")
     ]
     private var selectedCategoryIndex = 0
     
@@ -64,7 +64,7 @@ class DogosViewController: UIViewController {
         tableView.separatorStyle = UITableViewCellSeparatorStyle.none
         
         // TODO: Fix bug where images in tableview cell doesn't reload if rowHeight is dynamic
-        tableView.rowHeight = 300
+        tableView.rowHeight = 350
         //tableView.rowHeight = UITableViewAutomaticDimension
         
         return tableView
@@ -86,7 +86,7 @@ class DogosViewController: UIViewController {
         super.viewDidLoad()
         
         setupViews()
-        getImages()
+        updateDogos()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -109,17 +109,22 @@ class DogosViewController: UIViewController {
         // Update new selected button state to Selected
         didChangeState(sender: categoryButtons[selectedCategoryIndex])
         
+        // Refresh data
+        updateDogos()
     }
     
     
     
     // MARK: NETWORK
-    func getImages() {
+    func updateDogos() {
         SVProgressHUD.show()
         
-        let url = URLHelper.getImagesByBreedURL("husky")
+        let breed = categoryButtons[selectedCategoryIndex].code
+        let url = URLHelper.getImagesByBreedURL(breed)
+        
         print("init getImages - \(url)")
         
+        self.dogos.removeAll()
         Alamofire.request(url, method: .get).responseJSON { response in
             SVProgressHUD.dismiss()
 
@@ -137,6 +142,8 @@ class DogosViewController: UIViewController {
                             for (_, item):(String, JSON) in message {
                                 self.dogos.append(item.stringValue)
                             }
+                            
+                            print("number of dogos: \(self.dogos.count)")
                             self.tableView.reloadData()
                         }
                     }
