@@ -15,6 +15,7 @@ extension DogosViewController {
         self.title = "Dogos"
         self.navigationController?.navigationBar.isTranslucent = false
         
+        self.container.addSubview(self.categoryPicker)
         self.container.addSubview(self.tableView)
         self.view.addSubview(self.container)
         
@@ -22,8 +23,14 @@ extension DogosViewController {
             make.edges.equalToSuperview()
         }
         
+        self.categoryPicker.snp.makeConstraints { (make) in
+            make.left.top.right.equalToSuperview()
+            make.height.equalTo(50)
+        }
+        
         self.tableView.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
+            make.left.bottom.right.equalToSuperview()
+            make.top.top.equalTo(self.categoryPicker.snp.bottom)
         }
     }
     

@@ -22,7 +22,15 @@ class DogosViewController: UIViewController {
     internal lazy var container: UIView = {
         let view = UIView()
         
-        view.backgroundColor = .white
+        view.backgroundColor = UIColor.white
+        
+        return view
+    }()
+    
+    internal lazy var categoryPicker: UIView = {
+        let view = UIView()
+        
+        view.backgroundColor = UIColor.white
         
         return view
     }()
