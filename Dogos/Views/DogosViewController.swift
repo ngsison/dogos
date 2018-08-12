@@ -154,6 +154,7 @@ class DogosViewController: UIViewController {
         
         print("\ninit updateDogos - \(url)")
         
+        self.currentPage = 0
         self.dogos.removeAll()
         self.activeDogos.removeAll()
         
