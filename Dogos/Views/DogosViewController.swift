@@ -17,11 +17,13 @@ class DogosViewController: UIViewController {
     
     // MARK: PROPERTIES
     
+    
     // Pagination
     private var dogos = [String]()
     private var activeDogos = [String]()
     private let pageSize = 10
     private var currentPage = 0
+    
     
     // Tabs
     private var categoryButtons: [CategoryButton] = [
@@ -32,6 +34,8 @@ class DogosViewController: UIViewController {
     ]
     private var selectedCategoryIndex = 0
     
+    
+    // UI
     internal lazy var container: UIView = {
         let view = UIView()
         
@@ -75,15 +79,6 @@ class DogosViewController: UIViewController {
         //tableView.rowHeight = UITableViewAutomaticDimension
         
         return tableView
-    }()
-    
-    private lazy var dogosTableViewCell: DogosTableViewCell = {
-        let cell = DogosTableViewCell(
-            style: UITableViewCellStyle.default,
-            reuseIdentifier: DogosTableViewCell.identifier
-        )
-        
-        return cell
     }()
     
     

@@ -12,6 +12,7 @@
 		203734BB211B3A90004316C4 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203734BA211B3A90004316C4 /* Constants.swift */; };
 		203734BE211B3F24004316C4 /* URLHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203734BD211B3F24004316C4 /* URLHelper.swift */; };
 		203B6FDD211C239A00D441B6 /* DogosTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 203B6FDC211C239A00D441B6 /* DogosTableViewCell.swift */; };
+		20AC6BE82120A2C4006A6391 /* DogosTableViewCell+SetupViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20AC6BE72120A2C4006A6391 /* DogosTableViewCell+SetupViews.swift */; };
 		20C31D13211A9CB30067BE24 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20C31D12211A9CB30067BE24 /* AppDelegate.swift */; };
 		20C31D1A211A9CB50067BE24 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20C31D19211A9CB50067BE24 /* Assets.xcassets */; };
 		20C31D1D211A9CB50067BE24 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20C31D1B211A9CB50067BE24 /* LaunchScreen.storyboard */; };
@@ -26,6 +27,7 @@
 		203734BA211B3A90004316C4 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		203734BD211B3F24004316C4 /* URLHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLHelper.swift; sourceTree = "<group>"; };
 		203B6FDC211C239A00D441B6 /* DogosTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DogosTableViewCell.swift; sourceTree = "<group>"; };
+		20AC6BE72120A2C4006A6391 /* DogosTableViewCell+SetupViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "DogosTableViewCell+SetupViews.swift"; sourceTree = "<group>"; };
 		20C31D0F211A9CB30067BE24 /* Dogos.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dogos.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		20C31D12211A9CB30067BE24 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		20C31D19211A9CB50067BE24 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			isa = PBXGroup;
 			children = (
 				203B6FDC211C239A00D441B6 /* DogosTableViewCell.swift */,
+				20AC6BE72120A2C4006A6391 /* DogosTableViewCell+SetupViews.swift */,
 			);
 			path = "Table View Cells";
 			sourceTree = "<group>";
@@ -107,7 +110,6 @@
 				203734BC211B3F13004316C4 /* Utilities */,
 				20C31D28211A9D690067BE24 /* Supporting Files */,
 				20C31D27211A9D290067BE24 /* Views */,
-				20C31D26211A9D220067BE24 /* Controllers */,
 				20C31D24211A9D040067BE24 /* Models */,
 			);
 			path = Dogos;
@@ -118,13 +120,6 @@
 			children = (
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		20C31D26211A9D220067BE24 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Controllers;
 			sourceTree = "<group>";
 		};
 		20C31D27211A9D290067BE24 /* Views */ = {
@@ -289,6 +284,7 @@
 				203734BE211B3F24004316C4 /* URLHelper.swift in Sources */,
 				200E1FF4211F6665005E47AC /* Toggleable.swift in Sources */,
 				20C31D13211A9CB30067BE24 /* AppDelegate.swift in Sources */,
+				20AC6BE82120A2C4006A6391 /* DogosTableViewCell+SetupViews.swift in Sources */,
 				20C31D2A211A9F8E0067BE24 /* DogosViewController.swift in Sources */,
 				20C31D2C211A9FAB0067BE24 /* DogosViewController+SetupViews.swift in Sources */,
 				200E1FF1211F4C36005E47AC /* CategoryButton.swift in Sources */,

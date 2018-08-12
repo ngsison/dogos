@@ -16,12 +16,12 @@ class DogosTableViewCell: UITableViewCell {
     // MARK: PROPERTIES
     public static let identifier = "dogosTableViewCell"
     
-    private lazy var container: UIView = {
+    internal lazy var container: UIView = {
         let view = UIView()
         return view
     }()
     
-    private lazy var dogoImage: UIImageView = {
+    internal lazy var dogoImage: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = UIViewContentMode.scaleAspectFill
         imageView.clipsToBounds = true
@@ -42,17 +42,7 @@ class DogosTableViewCell: UITableViewCell {
     // MARK: OVERRIDES
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        self.container.addSubview(dogoImage)
-        self.addSubview(self.container)
-
-        self.dogoImage.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview().inset(UIEdgeInsetsMake(0, 0, 10, 0)) // top, left, bottom, right
-        }
-
-        self.container.snp.makeConstraints { (make) in
-            make.edges.equalToSuperview()
-        }
+        setupViews()
     }
     
     required init?(coder aDecoder: NSCoder) {
