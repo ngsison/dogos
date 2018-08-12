@@ -16,7 +16,14 @@ class DogosViewController: UIViewController {
     
     
     // MARK: PROPERTIES
+    
+    // Pagination
     private var dogos = [String]()
+    private var activeDogos = [String]()
+    private let pageSize = 10
+    private var currentPage = 0
+    
+    // Tabs
     private var categoryButtons: [CategoryButton] = [
         CategoryButton(named: "Husky", code: "husky"),
         CategoryButton(named: "Doberman", code: "doberman"),
@@ -115,6 +122,29 @@ class DogosViewController: UIViewController {
     
     
     
+    // MARK: FUNCTIONS
+    @objc func updateActiveDogos() {
+        let startIndex = currentPage * pageSize
+        let endIndex = startIndex + pageSize - 1
+        
+        print("\ninit updateActiveDogos")
+        print("startIndex: \(startIndex) - endIndex: \(endIndex)")
+        
+        for i in startIndex ... endIndex {
+            if i < dogos.count {
+                activeDogos.append(dogos[i])
+            }
+        }
+        
+        print("activeDogos.count: \(activeDogos.count)")
+        SVProgressHUD.dismiss()
+        tableView.reloadData()
+        
+        currentPage += 1
+    }
+    
+    
+    
     // MARK: NETWORK
     func updateDogos() {
         SVProgressHUD.show()
@@ -122,15 +152,15 @@ class DogosViewController: UIViewController {
         let breed = categoryButtons[selectedCategoryIndex].code
         let url = URLHelper.getImagesByBreedURL(breed)
         
-        print("init getImages - \(url)")
+        print("\ninit updateDogos - \(url)")
         
         self.dogos.removeAll()
+        self.activeDogos.removeAll()
+        
         Alamofire.request(url, method: .get).responseJSON { response in
-            SVProgressHUD.dismiss()
-
             switch response.result {
                 case .success:
-                    print("getImages success")
+                    print("\nupdateDogos success")
                     
                     if let resultValue = response.result.value {
                         let jsonObj = JSON(resultValue)
@@ -143,13 +173,14 @@ class DogosViewController: UIViewController {
                                 self.dogos.append(item.stringValue)
                             }
                             
-                            print("number of dogos: \(self.dogos.count)")
-                            self.tableView.reloadData()
+                            print("dogos.count: \(self.dogos.count)")
+                            
+                            self.perform(#selector(self.updateActiveDogos), with: nil, afterDelay: 1)
                         }
                     }
                 
                 case .failure:
-                    print("getImages failed")
+                    print("\nupdateDogos failed")
             }
 
         }
@@ -175,7 +206,7 @@ extension DogosViewController: CategoryButtonDelegate {
             sender.layer.borderWidth = sender.selectedBorderWidth
         }
         
-        print("current selected category: \(categoryButtons[selectedCategoryIndex].title)")
+        print("\ncurrent selected category: \(categoryButtons[selectedCategoryIndex].title)")
     }
     
 }
@@ -186,14 +217,27 @@ extension DogosViewController: CategoryButtonDelegate {
 extension DogosViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dogos.count
+        return activeDogos.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: DogosTableViewCell.identifier, for: indexPath) as! DogosTableViewCell
-
-        cell.setup(self.dogos[indexPath.row])
-
+        cell.setup(activeDogos[indexPath.row])
+        
+        if tableView.indexPathsForVisibleRows!.contains(indexPath) {
+            if indexPath.row == activeDogos.count - 1 {
+                if activeDogos.count < dogos.count {
+                    
+                    print("\ncurrentPage: \(currentPage)")
+                    print("indexPath.row: \(indexPath.row)")
+                    print("activeDogos.count: \(activeDogos.count)")
+                    
+                    SVProgressHUD.show()
+                    perform(#selector(updateActiveDogos), with: nil, afterDelay: 1.5)
+                }
+            }
+        }
+        
         return cell
     }
 
