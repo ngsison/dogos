@@ -171,7 +171,7 @@ class DogosViewController: UIViewController {
                             
                             print("dogos.count: \(self.dogos.count)")
                             
-                            self.perform(#selector(self.updateActiveDogos), with: nil, afterDelay: 1)
+                            self.perform(#selector(self.updateActiveDogos), with: nil, afterDelay: 1.5)
                         }
                     }
                 
